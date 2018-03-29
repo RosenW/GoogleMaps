@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GoogleMapsUtils {
@@ -72,6 +73,20 @@ public class GoogleMapsUtils {
                 Place place = new Place();
                 place.setLat(predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat"));
                 place.setLng(predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng"));
+                place.setName(predsJsonArray.getJSONObject(i).getString("name"));
+
+                ///////////////////////////////////
+                JSONArray types = predsJsonArray.getJSONObject(i).getJSONArray("types");
+                ArrayList<String> typeList = new ArrayList<>();
+                if (types != null) {
+                    int len = types.length();
+                    for (int j=0;j<len;j++){
+                        typeList.add(types.get(j).toString());
+                    }
+                }
+                place.setTypes(typeList);
+                //////////////////////////////////
+
                 place.setId(predsJsonArray.getJSONObject(i).getString("id"));
                 resultList.add(place);
             }

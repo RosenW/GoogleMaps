@@ -1,11 +1,17 @@
 package map.models;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import map.entities.Type;
+
+import java.util.ArrayList;
+import java.util.Set;
+
 public class Place {
     private String id;
     private String lat;
     private String  lng;
     private String name;
-    private String reference;
+    private ArrayList<String> types;
     private String address;
 
     public String getId() {
@@ -14,6 +20,14 @@ public class Place {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public ArrayList<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(ArrayList<String> types) {
+        this.types = types;
     }
 
     public String getAddress() {
@@ -30,14 +44,6 @@ public class Place {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
     }
 
     public String getLat() {
